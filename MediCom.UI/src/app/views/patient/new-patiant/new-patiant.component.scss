@@ -1,0 +1,35 @@
+.lab-test-row {
+    border: solid 1px #f1f1f1;
+    border-bottom: none;
+    padding: 5px 0;
+    position: relative;
+    &:nth-child(2n+1) {
+        background: #fafafa;
+    }
+    &:last-child {
+        border-bottom: solid 1px #f1f1f1;
+    }
+    .test-close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 20px;
+        text-align: center;
+        background: #F44336;
+        color: #FFF;
+        cursor: pointer;
+        z-index: 10;
+    }
+    .btnAdd {
+        cursor: pointer;
+    }
+}
+
+.form-group {
+    margin-bottom: 5px !important;
+}
+
+.total {
+    font-size: 20px;
+    color: #009688;
+}

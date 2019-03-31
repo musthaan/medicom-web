@@ -1,0 +1,117 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header"> <i class="icon-note"></i> Patient Details</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            Basic Details
+                            <hr />
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" [(ngModel)]="newPatient.name" name="name" class="form-control" />
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="">Age</label>
+                                        <input type="text" [(ngModel)]="newPatient.age" name="age" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="">Gender</label>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p-radioButton name="gender" value="genderMale" label="Male"
+                                                    [(ngModel)]="newPatient.gender"></p-radioButton>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p-radioButton name="gender" value="genderFemale" label="Female"
+                                                    [(ngModel)]="newPatient.gender"></p-radioButton>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <textarea [(ngModel)]="newPatient.address" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" [(ngModel)]="newPatient.phone" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Ref</label>
+                                <input type="text" [(ngModel)]="newPatient.ref" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="border-left:solid 1px #c8ced3">
+                            Tests
+                            <label class="pull-right total">{{ totalTestAmount | currency:'INR' }}</label>
+                            <hr />
+                            <div class="lab-test-row" *ngFor="let item of addedTests">
+                                <div class="test-close">x</div>
+                                <div class="col-md-12">
+                                    <h6>{{item.name}}</h6>
+                                    <small>{{item.groupName}}</small>
+                                    <div class="pull-right">{{ item.price | currency:'INR' }}</div>
+                                </div>
+                            </div>
+
+                            <div class="lab-test-row">
+                                <div class="col-md-12">
+                                    <p-dropdown [options]="groups" [(ngModel)]="group" name='group' filter="true"
+                                        [group]="true" appendTo="body" [style]="{'width':'100%', 'display':'block'}"
+                                        placeholder="Select a Group"></p-dropdown>
+                                </div>
+                                <div class="pull-right" style="padding: 5px 15px">
+                                    <label class="btnAdd" (click)="addTestToList()"> <i class="icon-plus"></i> Add</label>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="pull-right">
+                        <button class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<p-dialog header="Lab Test Group" [(visible)]="displayAddTestDialog" [width]="700" [modal]=true>
+    <form>
+        <div class="col-md-12">
+            <input type="text" class="form-control" (keypress)="onAddTestFilterTextChange($event)">
+
+        </div>
+        <div class="selected-tests">
+            <ul>
+                <li>
+                    <i class="fa fa-user"></i> Blood RE
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" *ngFor="let item of addTestFilterResults">
+
+            </div>
+
+        </div>
+        <div class="form-footer">
+            <button class="btn btn-sm btn-primary" type="submit" (click)="addGroup(model);">
+                <i class="fa fa-save"></i> Save</button>
+        </div>
+    </form>
+</p-dialog>

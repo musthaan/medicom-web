@@ -1,0 +1,41 @@
+<div class="animated fadeIn">
+  <p-table [value]="tableDataSource" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Date</th>
+        <th>Patient Name</th>
+        <th>Phone</th>
+        <th>Status</th>
+        <th style="width: 100px">
+
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-test>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <div class="pull-right edit" style="margin-left:5px">
+            <i class="icon-note icons font-1xl d-block "></i>
+          </div>
+          <div class="pull-right del">
+            <i class="icon-trash icons font-1xl d-block "></i>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage" let-columns>
+      <tr>
+        <td colspan="5">
+          No records found
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+
+</div>

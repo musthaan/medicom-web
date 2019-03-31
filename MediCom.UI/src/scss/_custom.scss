@@ -1,0 +1,72 @@
+// Here you can add other styles
+.ui-tree {
+    width: auto !important
+}
+
+body .ui-dialog {
+    .ui-dialog-content {
+        padding: 0;
+        padding-top: 10px;
+    }
+}
+
+.form-footer {
+    width: 100%;
+    background-color: $mgray-light;
+    padding: 5px;
+    button {
+        margin-right: 5px;
+    }
+}
+
+.add,
+.edit,
+.del {
+    cursor: pointer;
+}
+
+.refresh {
+    position: absolute;
+    right: 25px;
+    top: 10px;
+    background: #e4e5e6;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+label {
+    margin-bottom: 0px;
+}
+
+body {
+    .ui-dialog {
+        .ui-dialog-titlebar {
+            background-color: $app-primary-color;
+        }
+    }
+    .ui-toast {
+        .ui-toast-message {
+            .ui-toast-message-error {
+                background-color: $app-error-toast-color;
+                border: 0 none;
+                color: #ffffff;
+                .ui-toast-close-icon {
+                    color: #FFF;
+                }
+            }
+            .ui-toast-message-success {
+                background-color: $app-success-toast-color;
+                border: 0 none;
+                color: #ffffff;
+                .ui-toast-close-icon {
+                    color: #FFF;
+                }
+            }
+        }
+    }
+}
+
+.ui-autocomplete {
+    width: 100% !important;
+}

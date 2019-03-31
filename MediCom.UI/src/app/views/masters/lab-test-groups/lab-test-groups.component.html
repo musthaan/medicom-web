@@ -1,0 +1,74 @@
+<div class="row animated fadeIn">
+  <div class="col-md-4" style="position: relative;">
+    <div class="" *ngIf="treeDataSource&& treeDataSource.length>0" (click)="loadTree();">
+      <div class="refresh"><i class="icon-refresh icons font-1xl d-block"></i> </div>
+    </div>
+    <p-tree [value]="treeDataSource" selectionMode="single" [(selection)]="selectedGroup" (onNodeSelect)="groupNodeSelect($event)"></p-tree>
+  </div>
+  <div class="col-md-8">
+    <p-table [value]="tableDataSource">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Group Name</th>
+          <th style="width: 100px">Price</th>
+          <th style="width: 60px">
+            <div class="pull-right add" (click)="showAddNewForm();">
+              <i class="icon-plus icons font-1xl d-block "></i>
+            </div>
+          </th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-group>
+        <tr>
+          <td>{{group.name}} </td>
+          <td>{{group.price}} </td>
+          <td>
+            <div class="pull-right edit" style="margin-left:5px" (click)="editGroup(group);">
+              <i class="icon-note icons font-1xl d-block "></i>
+            </div>
+            <div class="pull-right del" (click)="deleteGroup(group._id);">
+              <i class="icon-trash icons font-1xl d-block "></i>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage" let-columns>
+        <tr>
+          <td colspan="3">
+            No records found
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+  </div>
+</div>
+
+
+
+
+<!-- add edit group -->
+<p-dialog header="Lab Test Group" [(visible)]="displayModel" [width]="400" [modal]=true>
+
+  <form>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input class="form-control" name="name" placeholder="Enter Lab test group name" type="text" [(ngModel)]="model.name">
+      </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group">
+          <label for="price">Pice</label>
+          <input class="form-control" name="price" placeholder="Enter Price" type="number" [(ngModel)]="model.price">
+        </div>
+      </div>
+
+    <div class="form-footer">
+      <button class="btn btn-sm btn-primary" type="submit" (click)="addGroup(model);"><i class="fa fa-user"></i> Save</button>
+      <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i> Reset</button>
+    </div>
+  </form>
+</p-dialog>
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
